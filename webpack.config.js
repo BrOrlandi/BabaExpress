@@ -35,6 +35,12 @@ module.exports = {
 
   plugins: [
     cssExtractTextPlugin,
+    new webpack.ProvidePlugin({
+        '$': "jquery",
+        'jQuery': "jquery",
+        'window.jQuery': "jquery",
+        'window.$': 'jquery'
+    }),
     new IndexHtmlPlugin('index.html', 'index.html'),
     new webpack.DefinePlugin({
       Environment: JSON.stringify(require('config')),
