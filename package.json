@@ -45,8 +45,11 @@
     "webpack-livereload-plugin": "^0.8.1"
   },
   "dependencies": {
+    "firebase": "^3.6.9",
     "node-libs-browser": "^1.0.0",
     "react": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react-dom": "^15.0.2",
+    "react-mixin": "^3.0.5",
+    "reactfire": "^1.0.0"
   }
 }
