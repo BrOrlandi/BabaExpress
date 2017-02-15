@@ -7,7 +7,6 @@ import FirebaseTest from 'components/FirebaseTest';
 import 'materialize-css/dist/js/materialize';
 
 import Navbar from './components/base/Navbar/Navbar';
-import Login from './components/base/Login/Login';
 import Home from './components/views/Home/Home';
 import BabaForm from './components/views/BabaForm/BabaForm';
 import BabaList from './components/views/BabaList/BabaList';
@@ -37,7 +36,6 @@ class App extends React.Component {
 
 ReactDOM.render(
     <Router history={hashHistory}>
-        <Route path="/login" component={Login} />
         <Route path="/" component={App}>
             <Route path="home" component={Home}/>
             <Route path="list" component={BabaList}/>

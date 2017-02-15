@@ -4,6 +4,9 @@ import logoSrc from './images/logo.png';
 
 import {Link} from 'react-router';
 
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('https://www.googleapis.com/auth/plus.login');
+
 class Navbar extends Component {
     constructor(props) {
         super(props);
@@ -11,6 +14,25 @@ class Navbar extends Component {
             user: null
         };
 
+    }
+    
+    loginGoogle(){
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log(user);
+        }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        });
     }
 
     componentWillMount() {
@@ -50,7 +72,6 @@ class Navbar extends Component {
     }
 
     logout(){
-        console.log("AAAAAAA");
         firebase.auth().signOut().then(()=>{
         // Sign-out successful.
         this.setState({user: null});
@@ -63,7 +84,7 @@ class Navbar extends Component {
         var user = this.state.user;
         var username = user != null ? <li><a href="#">{user.displayName}</a></li> : null;
 
-        var authButton = user != null ? <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li> :  <li><Link to="/login">Login</Link></li>;
+        var authButton = user != null ? <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li> :  <li><a href="#" onClick={this.loginGoogle.bind(this)}>Login</a></li>;
         return (
         <nav className="white" role="navigation">
             <div className="nav-wrapper container">
