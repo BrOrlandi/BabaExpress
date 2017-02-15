@@ -11,16 +11,38 @@ import BabaUtils from '../../../utils/BabaUtils';
 
 export default class BabaForm extends React.Component {
 
+    constructor(props){
+        super(props);
+        
+        this.state = {
+            user: null,
+            avatarURL:''
+        }
+    }
 
     componentWillMount() {
-        this.babasDb = firebase.database().ref("babas");
         this.babasPics = firebase.storage().ref();
-
-        this.setState({avatarURL: ''});
     }
 
     componentDidMount() {
         $(this.refs.escolaridade).material_select();
+        
+        var user = firebase.auth().onAuthStateChanged((user) => {
+            if(user){
+                this.refs.nome.value = user.displayName;
+                this.refs.email.value = user.email;
+                this.setState({user, avatarURL:user.photoURL});
+                
+                var ref = firebase.database().ref("babas/"+user.uid);
+                ref.once("value",(snapshot) => {
+                    if(snapshot.val() == null){
+                        console.log("NÃO FOI CADASTRADO");
+                    }else{
+                        console.log("JA FOI CADASTRADO");
+                    }
+                });
+            }
+        });
     }
 
     handleUploadSuccess = (filename) => {       
@@ -38,7 +60,7 @@ export default class BabaForm extends React.Component {
 
         BabaUtils.validateBaba(baba);
 
-        this.babasDb.push(baba);
+        firebase.database().ref("babas/"+this.state.user.uid).set(baba);
 
         hashHistory.push('/home');
     }
@@ -50,11 +72,11 @@ export default class BabaForm extends React.Component {
                 <form onSubmit={this.handleSubmit.bind(this)}>
 
                     <label htmlFor="nome">Nome:</label>
-                    <input id="nome" type="text" />
+                    <input ref="nome" id="nome" type="text" />
                     <br/>
 
                     <label htmlFor="email">Email:</label>
-                    <input id="email" type="email" />
+                    <input ref="email" id="email" type="email" />
                     <br/>
 
                     <label htmlFor="sexo">Sexo:</label>
@@ -68,10 +90,6 @@ export default class BabaForm extends React.Component {
                     <label htmlFor="f">Feminino</label>
 
                     <br/><br/>
-
-                    <label htmlFor="senha">Senha:</label>
-                    <input id="senha" type="password" />
-                    <br/>
 
                     <label htmlFor="telefone">Telefone:</label>
                     <input id="telefone" type="text" />
@@ -111,46 +129,46 @@ export default class BabaForm extends React.Component {
                    <table className="availability striped">
                              <thead>
                                  <tr>
-                                     <th class="time"></th>
-                                     <th class="day">Seg</th>
-                                     <th class="day">Ter</th>
-                                     <th class="day">Qua</th>
-                                     <th class="day">Quin</th>
-                                     <th class="day">Sex</th>
-                                     <th class="day">Sab</th>
-                                     <th class="day">Dom</th>
+                                     <th className="time"></th>
+                                     <th className="day">Seg</th>
+                                     <th className="day">Ter</th>
+                                     <th className="day">Qua</th>
+                                     <th className="day">Quin</th>
+                                     <th className="day">Sex</th>
+                                     <th className="day">Sab</th>
+                                     <th className="day">Dom</th>
                                  </tr>
                              </thead>
                              <tbody>
                                  <tr>
-                                     <th class="time">Manhã</th>
-                                     <td class="positive"><span class="accessibility">não</span></td>
-                                     <td class="positive"><span class="accessibility">não</span></td>
-                                     <td class="positive"><span class="accessibility">sim</span></td>
-                                     <td class="positive"><span class="accessibility">sim</span></td>
-                                     <td class="positive"><span class="accessibility">não</span></td>
-                                     <td><span class="accessibility">no</span></td>
-                                     <td><span class="accessibility">no</span></td>
+                                     <th className="time">Manhã</th>
+                                     <td className="positive"><span className="accessibility">não</span></td>
+                                     <td className="positive"><span className="accessibility">não</span></td>
+                                     <td className="positive"><span className="accessibility">sim</span></td>
+                                     <td className="positive"><span className="accessibility">sim</span></td>
+                                     <td className="positive"><span className="accessibility">não</span></td>
+                                     <td><span className="accessibility">no</span></td>
+                                     <td><span className="accessibility">no</span></td>
                                  </tr>
                                  <tr>
-                                     <th class="time">Tarde</th>
-                                     <td class="positive"><span class="accessibility">não</span></td>
-                                     <td class="positive"><span class="accessibility">sim</span></td>
-                                     <td class="positive"><span class="accessibility">sim</span></td>
-                                     <td class="positive"><span class="accessibility">não</span></td>
-                                     <td class="positive"><span class="accessibility">não</span></td>
-                                     <td class="positive"><span class="accessibility">sim</span></td>
-                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                     <th className="time">Tarde</th>
+                                     <td className="positive"><span className="accessibility">não</span></td>
+                                     <td className="positive"><span className="accessibility">sim</span></td>
+                                     <td className="positive"><span className="accessibility">sim</span></td>
+                                     <td className="positive"><span className="accessibility">não</span></td>
+                                     <td className="positive"><span className="accessibility">não</span></td>
+                                     <td className="positive"><span className="accessibility">sim</span></td>
+                                     <td className="positive"><span className="accessibility">sim</span></td>
                                  </tr>
                                  <tr>
-                                     <th class="time">Noite</th>
-                                     <td class="positive"><span class="accessibility">sim</span></td>
-                                     <td class="positive"><span class="accessibility">sim</span></td>
-                                     <td class="positive"><span class="accessibility">não</span></td>
-                                     <td class="positive"><span class="accessibility">não</span></td>
-                                     <td class="positive"><span class="accessibility">não</span></td>
-                                     <td class="positive"><span class="accessibility">sim</span></td>
-                                    <td class="positive"><span class="accessibility">não</span></td>
+                                     <th className="time">Noite</th>
+                                     <td className="positive"><span className="accessibility">sim</span></td>
+                                     <td className="positive"><span className="accessibility">sim</span></td>
+                                     <td className="positive"><span className="accessibility">não</span></td>
+                                     <td className="positive"><span className="accessibility">não</span></td>
+                                     <td className="positive"><span className="accessibility">não</span></td>
+                                     <td className="positive"><span className="accessibility">sim</span></td>
+                                    <td className="positive"><span className="accessibility">não</span></td>
                                  </tr>
                                 
                              </tbody>
@@ -173,7 +191,7 @@ export default class BabaForm extends React.Component {
 
                     <br/>
 
-                    <img src={this.state.avatarURL} />
+                    <img src={this.state.avatarURL}  style={{maxWidth: '300px'}}/>
 
                     <br/>
 

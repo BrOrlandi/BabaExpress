@@ -5,7 +5,6 @@ const createBaba = (form, fotoUrl) => {
         nome: form.nome.value,
         email: form.email.value,
         sexo: form.sexo.value,
-        senha: form.senha.value,
         telefone: form.telefone.value,
         cpf: form.cpf.value,
         nascimento: form.nascimento.value,

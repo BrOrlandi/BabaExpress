@@ -6,7 +6,6 @@ describe('BabaUtils', () => {
             nome: {value: 'Fulano Alves'},
             email: {value: 'falves@gmail.com'},
             sexo: {value: 'M'},
-            senha: {value: ''},
             telefone: {value: '(19) 9-8899-0011'},
             cpf: {value: '12345678901'},
             nascimento: {value: '01/01/2000'},

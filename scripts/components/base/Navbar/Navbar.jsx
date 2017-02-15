@@ -46,12 +46,12 @@ class Navbar extends Component {
             if (user) {
                 // User is signed in.
                 this.setState({user});
-                var ref = firebase.database().ref("babas").child(user.uid);
+                var ref = firebase.database().ref("babas/"+user.uid);
                 ref.once("value",(snapshot) => {
                     if(snapshot.val() == null){
                         hashHistory.push('/cadastro');
                     }
-                })
+                });
             } else {
                 // No user is signed in.
                 this.setState({user: null});
@@ -92,7 +92,7 @@ class Navbar extends Component {
         var user = this.state.user;
         var username = user != null ? <li><a href="#">{user.displayName}</a></li> : null;
 
-        var authButton = user != null ? <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li> :  <li><a href="#" onClick={this.loginGoogle.bind(this)}>Já sou Baba</a></li>;
+        var authButton = user != null ? <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li> :  <li><a href="#" className="waves-effect waves-light btn" onClick={this.loginGoogle.bind(this)}>Entrar</a></li>;
         return (
         <nav className="white" role="navigation">
             <div className="nav-wrapper container">
