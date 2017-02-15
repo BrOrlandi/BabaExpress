@@ -1,4 +1,4 @@
-import validator from 'validator';
+// import validator from 'validator';
 
 const createBaba = (form, fotoUrl) => {
     return {
@@ -22,7 +22,6 @@ const validateBaba = (baba) => {
         'nome',
         'email',
         'sexo',
-        'senha',
         'telefone',
         'cpf',
         'nascimento',

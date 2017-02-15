@@ -58,7 +58,7 @@ export default class BabaForm extends React.Component {
 
         const baba = BabaUtils.createBaba(e.target, fotoUrl);
 
-        BabaUtils.validateBaba(baba);
+        // BabaUtils.validateBaba(baba);
 
         firebase.database().ref("babas/"+this.state.user.uid).set(baba);
 
