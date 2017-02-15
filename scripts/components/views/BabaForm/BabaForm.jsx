@@ -11,19 +11,29 @@ import ImageUploader from 'react-firebase-image-uploader';
 
 export default class BabaForm extends React.Component {
     
+
+
     componentWillMount() {
         this.babasDb = firebase.database().ref("babas");
         this.babasPics = firebase.storage().ref();
+
+        this.setState({avatarURL: ''});
     }
 
     componentDidMount() {
         $(this.refs.escolaridade).material_select();
     }
 
+    handleUploadSuccess = (filename) => {       
+
+        firebase.storage().ref('fotos').child(filename).getDownloadURL().then(url =>
+            this.setState({avatarURL: url}));
+    };
+
     handleSubmit(e){
         e.preventDefault();
 
-        var fotoUrl = 'fakeUrl';
+        var fotoUrl = this.state.avatarURL;
         
         //this.babasPics.child(e.target.cpf.value).
         //put(e.target.foto.value);
@@ -95,9 +105,9 @@ export default class BabaForm extends React.Component {
                     <label htmlFor="escolaridade">Escolaridade:</label>
                     <div className="input-field">
                         <select ref="escolaridade" id="escolaridade">
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            <option value="Fundamental">Fundamental</option>
+                            <option value="Médio">Médio</option>
+                            <option value="Superior">Superior</option>
                         </select>
                     </div>
 
@@ -109,12 +119,15 @@ export default class BabaForm extends React.Component {
 
                     <label htmlFor="foto">Foto:</label>
                     <br/>
-                    
-                     <ImageUploader
-                        name="foto"
-                        storageRef={firebase.storage().ref('fotos')} />
 
-                    <img id="fotoPreview"/>
+                    <ImageUploader
+                        name="foto"
+                        storageRef={firebase.storage().ref('fotos')} 
+                        onUploadSuccess={this.handleUploadSuccess} />
+
+                    <br/>
+
+                    <img src={this.state.avatarURL} />
 
                     <br/><br/>
 
