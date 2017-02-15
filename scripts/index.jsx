@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import firebase from 'firebase';
-import { Router, Route, Link, hashHistory } from 'react-router'
+//import { Router, Route, Link, hashHistory } from 'react-router'
 
 import 'materialize-css/dist/js/materialize';
 
@@ -25,15 +25,6 @@ class App extends React.Component {
             <div>
                 <Navbar/>
                 <Home/>
-                <Router history={browserHistory}>
-                    <Route path="/" component={App}>
-                        <Route path="about" component={About}/>
-                        <Route path="users" component={Users}>
-                            <Route path="/user/:userId" component={User}/>
-                        </Route>
-                        <Route path="*" component={NoMatch}/>
-                    </Route>
-                </Router>
             </div>
         );
     }
