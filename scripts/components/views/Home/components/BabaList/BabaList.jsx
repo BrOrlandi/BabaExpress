@@ -48,7 +48,7 @@ export default class BabaList extends React.Component {
         });
         return (
             <div>
-                <h5>Nossas Encontradas</h5>
+                <h5>Nossas Babás</h5>
                 <List>
                     {items}
                 </List>
