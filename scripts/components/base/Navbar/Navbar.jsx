@@ -1,6 +1,5 @@
 import firebase from 'firebase';
 import React, { Component, PropTypes } from 'react';
-import React from 'react';
 import logoSrc from './images/logo.png';
 
 import {Link} from 'react-router';
