@@ -18,11 +18,11 @@ module.exports = {
       { test: /.(png|jpe?g|gif|svg.*)$/, loader: 'file-loader!img-loader?optimizationLevel=7&progressive=true'},
       {
         test: /\.css$/,
-        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader'),
+        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader', { publicPath: './' }),
       },
       {
         test: /\.scss$/,
-        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
+        loader: cssExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader', { publicPath: './' }),
       }
     ],
   },

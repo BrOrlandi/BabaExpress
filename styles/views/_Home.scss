@@ -1,12 +1,42 @@
 .search-ops-buttons > a.btn:not(:last-child) {
   margin-right: 8px;
 }
+.hero-container {
+  min-height: 380px;
+  line-height: 0;
+  color: rgba(255,255,255,.9);
 
-.parallax-container {
-  height: 380px;
   background-size: cover;
   background-image: url('/assets/images/background1.jpg');
   > img {
     height: 100%;
+  }
+}
+.hero-container .section {
+  width: 100%;
+}
+.baba-item {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6e6e6;
+
+  .baba-profile-pic {
+    width: 100%;
+    border-radius: 50%;
+  }
+  .baba-name {
+    font-size: 1.1rem;
+    color: $primary-color;
+    font-weight: 500;
+  }
+  p {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+  }
+  .baba-address {
+
+  }
+  .baba-cv {
+
   }
 }
