@@ -1,8 +1,8 @@
 import React from 'react';
-import $ from 'jquery';
 import background1 from './images/background1.jpg';
 import background2 from './images/background2.jpg';
 import background3 from './images/background3.jpg';
+import $ from 'jquery';
 
 export default class Home extends React.Component {
     constructor(props) {

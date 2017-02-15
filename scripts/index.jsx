@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
+import firebase from 'firebase';
 
-import 'jquery';
 import 'materialize-css/dist/js/materialize';
 
 import Navbar from './components/base/Navbar/Navbar';

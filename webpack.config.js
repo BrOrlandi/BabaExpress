@@ -47,7 +47,9 @@ module.exports = {
     }),
     new LiveReloadPlugin({appendScriptTag:true}),
   ],
-
+  externals: {
+      "jquery": "jQuery"
+  },
   resolve: {
     root: path.join(__dirname, 'scripts'),
     extensions: ['', '.js', '.json', '.jsx'],
