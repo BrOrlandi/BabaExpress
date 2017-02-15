@@ -8,7 +8,7 @@
     "watch": "webpack -d --watch",
     "dev": "webpack-dev-server -d",
     "production": "NODE_ENV=production webpack -p",
-    "test": "eslint . && jest",
+    "test": "jest",
     "deploy": "firebase deploy"
   },
   "repository": {
