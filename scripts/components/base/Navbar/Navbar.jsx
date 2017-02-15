@@ -67,8 +67,8 @@ class Navbar extends Component {
         return (
         <nav className="white" role="navigation">
             <div className="nav-wrapper container">
-                <a id="logo-container" style={{height: '100%'}} href="#" className="brand-logo">
-                    <img style={{height: '100%'}} src={logoSrc} />
+                <a className="logo-container brand-logo" href="#">
+                    <img src={logoSrc} />
                 </a>
                 <ul className="right hide-on-med-and-down">
                     <li><a href="#">Já sou Baba</a></li>

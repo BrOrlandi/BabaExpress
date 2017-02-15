@@ -1,15 +1,13 @@
 var webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    IndexHtmlPlugin = require('indexhtml-webpack-plugin'),
     LiveReloadPlugin = require('webpack-livereload-plugin'),
     path = require('path');
 
-var cssExtractTextPlugin = new ExtractTextPlugin('[contenthash].css');
+var cssExtractTextPlugin = new ExtractTextPlugin('style.css');
 
 module.exports = {
   entry: {
-    'script': './scripts/index.jsx',
-    'index.html': './index.html',
+    'script': './scripts/index.jsx'
   },
 
   module: {
@@ -35,13 +33,6 @@ module.exports = {
 
   plugins: [
     cssExtractTextPlugin,
-    new webpack.ProvidePlugin({
-        '$': "jquery",
-        'jQuery': "jquery",
-        'window.jQuery': "jquery",
-        'window.$': 'jquery'
-    }),
-    new IndexHtmlPlugin('index.html', 'index.html'),
     new webpack.DefinePlugin({
       Environment: JSON.stringify(require('config')),
     }),

@@ -12,6 +12,7 @@ import Home from './components/views/Home/Home';
 import BabaForm from './components/views/BabaForm/BabaForm';
 import BabaList from './components/views/BabaList/BabaList';
 
+import '../styles/_all.scss';
 
 window.firebase = firebase;
 
