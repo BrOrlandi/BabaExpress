@@ -1,12 +1,16 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import firebase from 'firebase';
-//import { Router, Route, Link, hashHistory } from 'react-router'
+import { Router, Route, Link, hashHistory, IndexRedirect } from 'react-router'
+import FirebaseTest from 'components/FirebaseTest';
 
 import 'materialize-css/dist/js/materialize';
 
 import Navbar from './components/base/Navbar/Navbar';
+import Login from './components/base/Login/Login';
 import Home from './components/views/Home/Home';
+import BabaForm from './components/views/BabaForm/BabaForm';
+import BabaList from './components/views/BabaList/BabaList';
 
 // defined global
 firebase.initializeApp({
@@ -17,17 +21,26 @@ firebase.initializeApp({
         "messagingSenderId": "1095245679046"
 });
 
-import FirebaseTest from 'components/FirebaseTest';
-
 class App extends React.Component {
     render(){
         return (
             <div>
                 <Navbar/>
-                <Home/>
+                {this.props.children}
             </div>
         );
     }
 }
 
-ReactDOM.render(<App/>, document.getElementById('react-body'));
+ReactDOM.render(
+    <Router history={hashHistory}>
+        <Route path="/login" component={Login} />
+        <Route path="/" component={App}>
+            <Route path="home" component={Home}/>
+            <Route path="list" component={BabaList}/>
+            <Route path="form" component={BabaForm}/>
+            <Route path="*" component={Home}/>
+            <IndexRedirect to="home" />
+        </Route>
+    </Router>
+    , document.getElementById('react-body'));
