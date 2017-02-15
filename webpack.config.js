@@ -23,14 +23,12 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: cssExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
-      },
-      {
-        test: /\.html$/,
-        loader: 'html?attrs=link:href img:src',
-      },
+      }
     ],
   },
-
+  devServer: {
+      contentBase: "public"
+  },
   plugins: [
     cssExtractTextPlugin,
     new webpack.DefinePlugin({
@@ -47,7 +45,8 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, 'public/bundle'),
+    publicPath: `bundle/`,
     filename: '[name].js',
   },
 };
