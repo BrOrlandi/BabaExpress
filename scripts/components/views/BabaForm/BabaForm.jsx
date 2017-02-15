@@ -105,6 +105,64 @@ export default class BabaForm extends React.Component {
                     <textarea id="cv"/>
                     <br/>
 
+                 <br/><br/>
+ 
+                <label htmlFor="cv">Disponibilidade:</label>
+                   <table className="availability striped">
+                             <thead>
+                                 <tr>
+                                     <th class="time"></th>
+                                     <th class="day">Seg</th>
+                                     <th class="day">Ter</th>
+                                     <th class="day">Qua</th>
+                                     <th class="day">Quin</th>
+                                     <th class="day">Sex</th>
+                                     <th class="day">Sab</th>
+                                     <th class="day">Dom</th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 <tr>
+                                     <th class="time">Manhã</th>
+                                     <td class="positive"><span class="accessibility">não</span></td>
+                                     <td class="positive"><span class="accessibility">não</span></td>
+                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                     <td class="positive"><span class="accessibility">não</span></td>
+                                     <td><span class="accessibility">no</span></td>
+                                     <td><span class="accessibility">no</span></td>
+                                 </tr>
+                                 <tr>
+                                     <th class="time">Tarde</th>
+                                     <td class="positive"><span class="accessibility">não</span></td>
+                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                     <td class="positive"><span class="accessibility">não</span></td>
+                                     <td class="positive"><span class="accessibility">não</span></td>
+                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                 </tr>
+                                 <tr>
+                                     <th class="time">Noite</th>
+                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                     <td class="positive"><span class="accessibility">não</span></td>
+                                     <td class="positive"><span class="accessibility">não</span></td>
+                                     <td class="positive"><span class="accessibility">não</span></td>
+                                     <td class="positive"><span class="accessibility">sim</span></td>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                 </tr>
+                                
+                             </tbody>
+                            <tfoot>
+                                 <tr>
+                                     
+                                 </tr>
+                             </tfoot>
+                         </table>
+ 
+                     <br/><br/>
+
                     <label htmlFor="foto">Foto:</label>
                     <br/>
 
