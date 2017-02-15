@@ -4,6 +4,7 @@ import firebase from 'firebase';
 
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
+import ImageUploader from 'react-firebase-image-uploader';
 
 // docs
 // https://github.com/firebase/reactfire/blob/master/docs/quickstart.md
@@ -12,14 +13,34 @@ export default class BabaForm extends React.Component {
     
     componentWillMount() {
         this.babasDb = firebase.database().ref("babas");
+        this.babasPics = firebase.storage().ref();
+    }
+
+    componentDidMount() {
+        $(this.refs.escolaridade).material_select();
     }
 
     handleSubmit(e){
         e.preventDefault();
+
+        var fotoUrl = 'fakeUrl';
+        
+        //this.babasPics.child(e.target.cpf.value).
+        //put(e.target.foto.value);
+
         this.babasDb.push({
             nome: e.target.nome.value,
-            email: e.target.email.value
-        });
+            email: e.target.email.value,
+            sexo: e.target.sexo.value,
+            senha: e.target.senha.value,
+            telefone: e.target.telefone.value,
+            cpf: e.target.cpf.value,
+            nascimento: e.target.nascimento.value,
+            endereco: e.target.endereco.value,
+            escolaridade: e.target.escolaridade.value,
+            cv: e.target.cv.value,
+            foto: fotoUrl   
+        }); 
 
         hashHistory.push('/home');
     }
@@ -27,7 +48,7 @@ export default class BabaForm extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="container">
                 <form onSubmit={this.handleSubmit.bind(this)}>
 
                     <label htmlFor="nome">Nome:</label>
@@ -40,13 +61,15 @@ export default class BabaForm extends React.Component {
 
                     <label htmlFor="sexo">Sexo:</label>
                     <br/>
-                    <input name="sexo" type="radio" id="sexo" />
-                    <label for="sexo">Masculino</label>
-
-                    <input name="sexo" type="radio" id="sexo" />
-                    <label for="sexo">Feminino</label>
+                    <input name="sexo" type="radio" id="m" value="m"/>
+                    <label htmlFor="m">Masculino</label>
 
                     <br/>
+
+                    <input name="sexo" type="radio" id="f" value="f"/>
+                    <label htmlFor="f">Feminino</label>
+
+                    <br/><br/>
 
                     <label htmlFor="senha">Senha:</label>
                     <input id="senha" type="password" />
@@ -66,10 +89,18 @@ export default class BabaForm extends React.Component {
 
                     <label htmlFor="endereco">Endereço:</label>
                     <input id="endereco" type="text" />
+
                     <br/>
 
                     <label htmlFor="escolaridade">Escolaridade:</label>
-                    <input id="escolaridade" type="text" />
+                    <div className="input-field">
+                        <select ref="escolaridade" id="escolaridade">
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                    </div>
+
                     <br/>
 
                     <label htmlFor="cv">Mini-Currículo:</label>
@@ -78,8 +109,14 @@ export default class BabaForm extends React.Component {
 
                     <label htmlFor="foto">Foto:</label>
                     <br/>
-                    <br/>
-                    <br/>
+                    
+                     <ImageUploader
+                        name="foto"
+                        storageRef={firebase.storage().ref('fotos')} />
+
+                    <img id="fotoPreview"/>
+
+                    <br/><br/>
 
                     <button type="submit">Efetuar cadastro!</button>
                 </form>
