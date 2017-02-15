@@ -8,3 +8,6 @@ before_script:
 
 after_success:
   - firebase deploy --token=${FIREBASE_TOKEN}
+
+notifications:
+  slack: plsoftware:dkUJo3UrRbRpr2RREmWZgdwz
