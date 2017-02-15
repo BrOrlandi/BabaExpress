@@ -37,9 +37,9 @@ export default class Home extends React.Component {
                             <div className="col s12 center">
                                 <h5>Para quando eu preciso de uma babá?</h5>
                                 <div className="search-ops-buttons">
-                                    <a className="waves-effect waves-light btn grey lighten-1">Para já!</a>
-                                    <a className="waves-effect waves-light btn grey lighten-1">Para essa semana</a>
-                                    <a className="waves-effect waves-light btn grey lighten-1">Ver Todas</a>
+                                    <a className="waves-effect waves-light btn grey-background">Para já!</a>
+                                    <a className="waves-effect waves-light btn grey-background">Para essa semana</a>
+                                    <a className="waves-effect waves-light btn grey-background">Ver Todas</a>
                                 </div>
                             </div>
                         </div>
