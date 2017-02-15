@@ -1,5 +1,4 @@
 import React from 'react';
-import background1 from './images/background1.jpg';
 import $ from 'jquery';
 import {Link} from 'react-router';
 
@@ -8,7 +7,7 @@ export default class Home extends React.Component {
         super(props);
     }
     componentDidMount() {
-        $('.parallax').parallax();
+        //$('.parallax').parallax();
     }
     render() {
         return (
@@ -27,9 +26,11 @@ export default class Home extends React.Component {
                             <br/><br/>
                         </div>
                     </div>
+                    {/*
                     <div className="parallax">
                         <img src={background1} alt="Unsplashed background img 1"/>
                     </div>
+                     */}
                 </div>
                 <div className="container">
                     <div className="section">
