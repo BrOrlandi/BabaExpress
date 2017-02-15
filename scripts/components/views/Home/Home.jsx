@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import {Link} from 'react-router';
+import BabaList from './components/BabaList/BabaList';
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <div>
-                <div id="index-banner" className="parallax-container">
+                <div id="index-banner" className="hero-container">
                     <div className="section no-pad-bot">
                         <div className="container">
                             <br/><br/>
@@ -32,6 +33,7 @@ export default class Home extends React.Component {
                     </div>
                      */}
                 </div>
+                {/*
                 <div className="container">
                     <div className="section">
                         <div className="row">
@@ -42,6 +44,16 @@ export default class Home extends React.Component {
                                     <a className="waves-effect waves-light btn grey-background">Para essa semana</a>
                                     <a className="waves-effect waves-light btn grey-background">Ver Todas</a>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 */}
+                <div className="container">
+                    <div className="section">
+                        <div className="row">
+                            <div className="col s12">
+                                <BabaList />
                             </div>
                         </div>
                     </div>
