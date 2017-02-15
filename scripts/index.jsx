@@ -12,7 +12,9 @@ import Home from './components/views/Home/Home';
 import BabaForm from './components/views/BabaForm/BabaForm';
 import BabaList from './components/views/BabaList/BabaList';
 
-// defined global
+
+window.firebase = firebase;
+
 firebase.initializeApp({
         "apiKey": "AIzaSyD-dhe2wvATPu66bZ4y5LPVnqWQnrQKfzQ",
         "authDomain": "babaexpress-4ee5c.firebaseapp.com",
