@@ -1,7 +1,5 @@
 import React from 'react';
 import background1 from './images/background1.jpg';
-import background2 from './images/background2.jpg';
-import background3 from './images/background3.jpg';
 import $ from 'jquery';
 import {Link} from 'react-router';
 
@@ -39,9 +37,9 @@ export default class Home extends React.Component {
                             <div className="col s12 center">
                                 <h5>Para quando eu preciso de uma babá?</h5>
                                 <div className="search-ops-buttons">
-                                    <a className="waves-effect waves-light btn">Para já!</a>
-                                    <a className="waves-effect waves-light btn">Para essa semana</a>
-                                    <a className="waves-effect waves-light btn">Ver Todas</a>
+                                    <a className="waves-effect waves-light btn grey lighten-1">Para já!</a>
+                                    <a className="waves-effect waves-light btn grey lighten-1">Para essa semana</a>
+                                    <a className="waves-effect waves-light btn grey lighten-1">Ver Todas</a>
                                 </div>
                             </div>
                         </div>

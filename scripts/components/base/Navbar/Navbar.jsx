@@ -92,7 +92,7 @@ class Navbar extends Component {
         var user = this.state.user;
         var username = user != null ? <li><a href="#">{user.displayName}</a></li> : null;
 
-        var authButton = user != null ? <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li> :  <li><a href="#" onClick={this.loginGoogle.bind(this)}>Login</a></li>;
+        var authButton = user != null ? <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li> :  <li><a href="#" onClick={this.loginGoogle.bind(this)}>Já sou Baba</a></li>;
         return (
         <nav className="white" role="navigation">
             <div className="nav-wrapper container">
@@ -100,12 +100,10 @@ class Navbar extends Component {
                     <img src={logoSrc} />
                 </a>
                 <ul className="right hide-on-med-and-down">
-                    <li><a href="#">Já sou Baba</a></li>
                     {username}
                     {authButton}
                 </ul>
                 <ul id="nav-mobile" className="side-nav">
-                    <li><a href="#">Já sou Baba</a></li>
                     {username}
                     {authButton}
                 </ul>
