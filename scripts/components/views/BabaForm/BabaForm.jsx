@@ -1,18 +1,11 @@
 import firebase from 'firebase';
-//import reactMixin from 'react-mixin';
-//import ReactFireMixin from 'reactfire';
 
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
 import ImageUploader from 'react-firebase-image-uploader';
 
-// docs
-// https://github.com/firebase/reactfire/blob/master/docs/quickstart.md
-
 export default class BabaForm extends React.Component {
     
-
-
     componentWillMount() {
         this.babasDb = firebase.database().ref("babas");
         this.babasPics = firebase.storage().ref();
@@ -34,9 +27,6 @@ export default class BabaForm extends React.Component {
         e.preventDefault();
 
         var fotoUrl = this.state.avatarURL;
-        
-        //this.babasPics.child(e.target.cpf.value).
-        //put(e.target.foto.value);
 
         this.babasDb.push({
             nome: e.target.nome.value,
@@ -115,7 +105,63 @@ export default class BabaForm extends React.Component {
 
                     <label htmlFor="cv">Mini-Currículo:</label>
                     <textarea id="cv"/>
-                    <br/>
+                    <br/><br/>
+
+ <label htmlFor="cv">Disponibilidade:</label>
+                  <table class="availability">
+                            <thead>
+                                <tr>
+                                    <th class="time"></th>
+                                    <th class="day">Seg</th>
+                                    <th class="day">Ter</th>
+                                    <th class="day">Qua</th>
+                                    <th class="day">Quin</th>
+                                    <th class="day">Sex</th>
+                                    <th class="day">Sab</th>
+                                    <th class="day">Dom</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="time">Manhã</th>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                    <td class="positive"><span class="accessibility">sim</span></td>
+                                    <td class="positive"><span class="accessibility">sim</span></td>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                    <td><span class="accessibility">no</span></td>
+                                    <td><span class="accessibility">no</span></td>
+                                </tr>
+                                <tr>
+                                    <th class="time">Tarde</th>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                    <td class="positive"><span class="accessibility">sim</span></td>
+                                    <td class="positive"><span class="accessibility">sim</span></td>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                    <td class="positive"><span class="accessibility">sim</span></td>
+                                    <td class="positive"><span class="accessibility">sim</span></td>
+                                </tr>
+                                <tr>
+                                    <th class="time">Noite</th>
+                                    <td class="positive"><span class="accessibility">sim</span></td>
+                                    <td class="positive"><span class="accessibility">sim</span></td>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                    <td class="positive"><span class="accessibility">sim</span></td>
+                                    <td class="positive"><span class="accessibility">não</span></td>
+                                </tr>
+                                
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    <br/><br/>
 
                     <label htmlFor="foto">Foto:</label>
                     <br/>
@@ -129,13 +175,14 @@ export default class BabaForm extends React.Component {
 
                     <img src={this.state.avatarURL} />
 
-                    <br/><br/>
+                    <br/>
 
-                    <button type="submit">Efetuar cadastro!</button>
+                    <button className="btn-large" type="submit">Efetuar cadastro!</button>
+                    <br/>
+                    <br/>
+                    <br/>
                 </form>
             </div>
         );
     }
 }
-
-//reactMixin(FirebaseTest.prototype, ReactFireMixin);
