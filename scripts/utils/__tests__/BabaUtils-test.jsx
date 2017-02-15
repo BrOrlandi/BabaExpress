@@ -1,21 +1,21 @@
 import BabaUtils from '../BabaUtils';
 
 describe('BabaUtils', () => {
-    it('should validate a Baba registry', () => {;
+    it('should invalidate an invalid Baba registry', () => {;
         const baba = BabaUtils.createBaba({
-            nome: 'Fulano Alves',
-            email: 'falves@gmail.com',
-            sexo: 'M',
-            senha: 'asd123',
-            telefone: '(19) 9-8899-0011',
-            cpf: '12345678901',
-            nascimento: '01/01/2000',
-            endereco: 'Rua Moraes Moreira, 200',
-            escolaridade: '2º Grau completo',
-            cv: 'Lalalalalalala'
+            nome: {value: 'Fulano Alves'},
+            email: {value: 'falves@gmail.com'},
+            sexo: {value: 'M'},
+            senha: {value: ''},
+            telefone: {value: '(19) 9-8899-0011'},
+            cpf: {value: '12345678901'},
+            nascimento: {value: '01/01/2000'},
+            endereco: {value: 'Rua Moraes Moreira, 200'},
+            escolaridade: {value: '2º Grau completo'},
+            cv: {value: 'Lalalalalalala'}
         }, 'my_photo.jpg');
         expect(() => {
             BabaUtils.validateBaba(baba);
-        }).not.toThrow();
+        }).toThrow();
     });
 });
