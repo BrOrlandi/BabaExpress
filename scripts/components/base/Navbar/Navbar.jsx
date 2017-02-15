@@ -7,6 +7,8 @@ import {Link} from 'react-router';
 var provider = new firebase.auth.GoogleAuthProvider();
 provider.addScope('https://www.googleapis.com/auth/plus.login');
 
+import { hashHistory } from 'react-router';
+
 class Navbar extends Component {
     constructor(props) {
         super(props);
@@ -44,6 +46,12 @@ class Navbar extends Component {
             if (user) {
                 // User is signed in.
                 this.setState({user});
+                var ref = firebase.database().ref("babas").child(user.uid);
+                ref.once("value",(snapshot) => {
+                    if(snapshot.val() == null){
+                        hashHistory.push('/cadastro');
+                    }
+                })
             } else {
                 // No user is signed in.
                 this.setState({user: null});

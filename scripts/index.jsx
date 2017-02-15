@@ -39,7 +39,7 @@ ReactDOM.render(
         <Route path="/" component={App}>
             <Route path="home" component={Home}/>
             <Route path="list" component={BabaList}/>
-            <Route path="form" component={BabaForm}/>
+            <Route path="cadastro" component={BabaForm}/>
             <Route path="*" component={Home}/>
             <IndexRedirect to="home" />
         </Route>
