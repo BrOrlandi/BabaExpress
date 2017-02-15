@@ -1,8 +1,6 @@
 import BabaUtils from '../BabaUtils';
 
 describe('BabaUtils', () => {
-
-    /*
     it('should validate a Baba registry', () => {;
         const baba = BabaUtils.createBaba({
             nome: 'Fulano Alves',
@@ -16,9 +14,8 @@ describe('BabaUtils', () => {
             escolaridade: '2º Grau completo',
             cv: 'Lalalalalalala'
         }, 'my_photo.jpg');
-
-        //expect(BabaUtils.validateBaba(baba)).not.toThrow();
-        expect(BabaUtils.validateBaba(baba)).not.toThrow();
+        expect(() => {
+            BabaUtils.validateBaba(baba);
+        }).not.toThrow();
     });
-    */
 });
